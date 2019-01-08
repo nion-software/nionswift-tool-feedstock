@@ -1,0 +1,32 @@
+{% set name = "nionswift-tool" %}
+{% set version = "0.3.21" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+build:
+  number: 0
+  skip: True  # [py2k]
+  entry_points:
+    - nionswift-tool = nion.nionswift_tool.command:main
+
+requirements:
+  host:
+    - python {{ python }}
+    - pip
+    - setuptools
+  run:
+    - python >=3.6
+
+about:
+  home: http://github.com/nion-software/nionswift-tool
+  license: Apache-2.0
+  license_family: Apache
+  license_file: LICENSE
+  summary: "A native launcher for Nion Swift."
+  dev_url: https://github.com/nion-software/nionswift-tool
+
+extra:
+  recipe-maintainers:
+    - cmeyer
