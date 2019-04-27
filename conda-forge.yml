@@ -3,6 +3,10 @@ github:
 channels:
   targets:
   - [nion, main]
+provider:
+  linux: travis
+  osx: travis
+  win: appveyor
 max_py_ver: '37'
 travis:
   secure:
