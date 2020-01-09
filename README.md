@@ -18,8 +18,8 @@ Current build status
 <table><tr>
     <td>Travis</td>
     <td>
-      <a href="https://travis-ci.org/nion-software/nionswift-tool-feedstock">
-        <img alt="macOS" src="https://img.shields.io/travis/nion-software/nionswift-tool-feedstock/master.svg?label=macOS">
+      <a href="https://travis-ci.com/nion-software/nionswift-tool-feedstock">
+        <img alt="macOS" src="https://img.shields.io/travis/com/nion-software/nionswift-tool-feedstock/master.svg?label=macOS">
       </a>
     </td>
   </tr><tr>
@@ -90,7 +90,12 @@ Current build status
       </details>
     </td>
   </tr>
-![ppc64le disabled](https://img.shields.io/badge/ppc64le-disabled-lightgrey.svg)
+  <tr>
+    <td>Linux_ppc64le</td>
+    <td>
+      <img src="https://img.shields.io/badge/ppc64le-disabled-lightgrey.svg" alt="ppc64le disabled">
+    </td>
+  </tr>
 </table>
 
 Current release info

@@ -6,15 +6,17 @@ language: generic
 env:
   global:
     # The BINSTAR_TOKEN secure variable. This is defined canonically in conda-forge.yml.
-    - secure: "Ny5CkAs5DpGM1+5WZF1SPG3Dq+CiiJpdtKWx0NDm6bvhOl9CShFa1TcMHrl6YEdp5qmELuXuiJa6pJy1Dxj0yVIg2H0s7aU7J/zFiE4LYknsfusYxF2BIsoBI3zN4y8BrSjB3YW7iPQ7KLiP2ompS70CGDqTzj3PTCV06/rx3c02dAjmtXz9RoHgWSCM+sSzrE20BWXKjBRgPo0Wk8947YNNubDz0xENLpUUOJC5pmc406nek+FrzPbVf7etNor5CnucjpyOfV08/X1kBOFJuaJYp9jawSs5kIjbFKuBkLOWsP7ExY3tzMsxhaQYErD18X89rytce8DVVaOJ2MqNSOMoKxLNPVXmJrwqDAFkgIMn+R5mOFFpNX/aFqJuGiWbgTWztoOqkl+QeUzjNfyWDSfssT1fk0K4D/8HMEylE0wRGxvJCTgJD+8BV84gWeLhbNBApQFcWqjQQUgV5IOUQ3fpKf81JKUODMB7GhL/v4cTfotdn8/YE/nVcBjIg4nJ9q4mgY8H1D/D6De8QlcETAaLdOrrKXyhsb3j0AdJUgqJe9jGAGWfGvF6WsaqX+e3q06mJ4F4eITG2d3t7yA00KgMX1NVkCTbWeAmaPHwAKAZGxxvu8DkJ+evRuAvoVVDG7ogZPOc2InWFN9P/SZ6kAU0ikW7uRia8xJrPTWwBm0="
+    - secure: "FmefKzKhYWTf+DUPTtefm21zPRI8qf1Uf5NgQCBOGbxDL2usIuY9Qo/SZrLbzDfxpROf7g5TgMIjHB4f2H8L4ItXqa9q/8pWmNz/32oxrDfMRdUmBTx4HJXD0uTb63j39/pdpQ1t78I5N4ptblDLP+JLy20IWpyvgwexZ7MLHUY7dhXxsaQEkPryWwbnIPRuEAYqaB0tXTUjyEito+Xuux+TaSxIH+Iv0x1VmrtoBTKqgAJTuzhfdOG5rpU6L4R9H1QfWaYU/06WdJoXD+DE8zMH/EsVKdjjrwSaJnG5t7ssxaWZowYGZnD9ffzZfbv8UT4uFwgXqbs8ulR+yhKS137tZ0mPPYb/Br/ww8zKs4mlPaM6Xb81ceSLACIYQJadwRJbOR2oNaN6eXqIBpZu7qkuua3GUvXxVa8pxIfIOcAWh8Mjo8S9GMMC4oOBx5CBIfy4z0uwIyhbGRlv4Al0cD+aLvI3AgVn2ZNWotYPEhQ6GkcqZ/8vro6h0M8aY9ifOVTstlzYsgKlIGzqwS49OYSRpjCD236fF/2dqvpaFqe6FoNmKnOp/TduvRurkwQHG/aA4OZDD2/4PbfXlf9zTaNnPEFsKYMTmAqx3iBGq8R//WXszuDvAKFThH9VucQi72tEMK18Rjff2CU3uHGU1CMRKalVDnJX7bf0fOOruyQ="
 
 matrix:
   include:
-    - env: CONFIG=linux_python3.6 UPLOAD_PACKAGES=True PLATFORM=linux-64
+    - env: CONFIG=linux_python3.6 UPLOAD_PACKAGES=True PLATFORM=linux-64 DOCKER_IMAGE=condaforge/linux-anvil-comp7
       os: linux
+      arch: amd64
 
-    - env: CONFIG=linux_python3.7 UPLOAD_PACKAGES=True PLATFORM=linux-64
+    - env: CONFIG=linux_python3.7 UPLOAD_PACKAGES=True PLATFORM=linux-64 DOCKER_IMAGE=condaforge/linux-anvil-comp7
       os: linux
+      arch: amd64
 
     - env: CONFIG=osx_python3.6 UPLOAD_PACKAGES=True PLATFORM=osx-64
       os: osx
@@ -25,7 +27,9 @@ matrix:
       osx_image: xcode9.4
 
 script:
+  - export CI=travis
+  - export GIT_BRANCH="$TRAVIS_BRANCH"
 
   - if [[ ${PLATFORM} =~ .*osx.* ]]; then ./.travis/run_osx_build.sh; fi
 
-  - if [[ ${PLATFORM} =~ .*linux.* ]]; then pip install shyaml --user && ./.travis/run_docker_build.sh; fi
+  - if [[ ${PLATFORM} =~ .*linux.* ]]; then ./.scripts/run_docker_build.sh; fi
