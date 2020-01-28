@@ -7,7 +7,8 @@ provider:
   linux: travis
   osx: travis
   win: appveyor
-max_py_ver: '37'
+min_py_ver: '36'
+max_py_ver: '38'
 travis:
   secure:
     BINSTAR_TOKEN: "FmefKzKhYWTf+DUPTtefm21zPRI8qf1Uf5NgQCBOGbxDL2usIuY9Qo/SZrLbzDfxpROf7g5TgMIjHB4f2H8L4ItXqa9q/8pWmNz/32oxrDfMRdUmBTx4HJXD0uTb63j39/pdpQ1t78I5N4ptblDLP+JLy20IWpyvgwexZ7MLHUY7dhXxsaQEkPryWwbnIPRuEAYqaB0tXTUjyEito+Xuux+TaSxIH+Iv0x1VmrtoBTKqgAJTuzhfdOG5rpU6L4R9H1QfWaYU/06WdJoXD+DE8zMH/EsVKdjjrwSaJnG5t7ssxaWZowYGZnD9ffzZfbv8UT4uFwgXqbs8ulR+yhKS137tZ0mPPYb/Br/ww8zKs4mlPaM6Xb81ceSLACIYQJadwRJbOR2oNaN6eXqIBpZu7qkuua3GUvXxVa8pxIfIOcAWh8Mjo8S9GMMC4oOBx5CBIfy4z0uwIyhbGRlv4Al0cD+aLvI3AgVn2ZNWotYPEhQ6GkcqZ/8vro6h0M8aY9ifOVTstlzYsgKlIGzqwS49OYSRpjCD236fF/2dqvpaFqe6FoNmKnOp/TduvRurkwQHG/aA4OZDD2/4PbfXlf9zTaNnPEFsKYMTmAqx3iBGq8R//WXszuDvAKFThH9VucQi72tEMK18Rjff2CU3uHGU1CMRKalVDnJX7bf0fOOruyQ="
