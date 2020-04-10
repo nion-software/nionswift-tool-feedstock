@@ -1,12 +1,12 @@
 {% set name = "nionswift-tool" %}
-{% set version = "0.4.2" %}
+{% set version = "0.4.3" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 build:
-  number: 1
+  number: 0
   skip: True  # [py2k]
   entry_points:
     - nionswift-tool = nion.nionswift_tool.command:main
