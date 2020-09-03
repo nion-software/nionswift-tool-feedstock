@@ -2,3 +2,8 @@ channel_sources:
   - defaults
 channel_targets:
   - nion main
+python:
+  - 3.7
+  - 3.8
+numpy:
+  - 1.14

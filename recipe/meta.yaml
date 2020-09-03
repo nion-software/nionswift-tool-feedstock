@@ -1,5 +1,5 @@
 {% set name = "nionswift-tool" %}
-{% set version = "0.4.4" %}
+{% set version = "0.4.5" %}
 
 package:
   name: {{ name|lower }}
@@ -13,11 +13,12 @@ build:
 
 requirements:
   host:
-    - python {{ python }}
+    - python
     - pip
     - setuptools
+    - numpy 1.14.*
   run:
-    - python >=3.6
+    - python
 
 about:
   home: http://github.com/nion-software/nionswift-tool

@@ -7,7 +7,7 @@ provider:
   linux: travis
   osx: travis
   win: appveyor
-min_py_ver: '36'
+min_py_ver: '37'
 max_py_ver: '38'
 travis:
   secure:
