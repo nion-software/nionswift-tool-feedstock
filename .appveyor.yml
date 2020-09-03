@@ -3,6 +3,7 @@
 # "conda smithy rerender".
 # -*- mode: yaml -*-
 
+image: Visual Studio 2017
 environment:
 
   BINSTAR_TOKEN:
@@ -10,13 +11,10 @@ environment:
     secure: 2hGJzrrLwlyZMDxCdlJkXvz5ZSGTxueLow9aH5I4zB+tOeHmSZYXRpdCctnvJqHj
 
   matrix:
-    - CONFIG: win_python3.6.____cpython
+    - CONFIG: win_64_python3.7
       CONDA_INSTALL_LOCN: C:\Miniconda36-x64
 
-    - CONFIG: win_python3.7.____cpython
-      CONDA_INSTALL_LOCN: C:\Miniconda36-x64
-
-    - CONFIG: win_python3.8.____cpython
+    - CONFIG: win_64_python3.8
       CONDA_INSTALL_LOCN: C:\Miniconda36-x64
 
 
@@ -44,7 +42,7 @@ install:
 
     # Configure the VM.
     # Tell conda we want an updated version of conda-forge-ci-setup and conda-build
-    - cmd: conda.exe install -n root -c conda-forge --quiet --yes conda-forge-ci-setup=2 conda-build
+    - cmd: conda.exe install -n root -c conda-forge --quiet --yes conda-forge-ci-setup=3 conda-build pip
     - cmd: setup_conda_rc .\ .\recipe .\.ci_support\%CONFIG%.yaml
     - cmd: run_conda_forge_build_setup
 
@@ -52,7 +50,8 @@ install:
 build: off
 
 test_script:
-    - conda.exe build recipe -m .ci_support\%CONFIG%.yaml
+    - cmd: conda.exe build recipe -m .ci_support\%CONFIG%.yaml
 deploy_script:
     - set "GIT_BRANCH=%APPVEYOR_REPO_BRANCH%"
-    - cmd: upload_package .\ .\recipe .ci_support\%CONFIG%.yaml
+    - set "FEEDSTOCK_NAME=%APPVEYOR_REPO_NAME:*/=%"
+    - cmd: upload_package  .\ .\recipe .ci_support\%CONFIG%.yaml
